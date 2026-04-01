@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="item_carta_image_description">Imagem da Carta</string>
+    <string name="item_carta_favorite_description">Favoritar Carta</string>
+    <string name="item_carta_name_placeholder">Nome da Carta</string>
+    <string name="item_carta_description_placeholder">Descricao</string>
+    <string name="item_carta_type_placeholder">Tipo</string>
+    <string name="item_carta_rarity_placeholder">Raridade</string>
+    <string name="item_carta_collection_placeholder">Colecao</string>
+    <string name="item_carta_year_placeholder">Ano</string>
+    <string name="item_carta_quality_placeholder">Qualidade</string>
+    <string name="item_carta_stock_placeholder">Estoque: 0</string>
+    <string name="item_carta_price_placeholder">R$ 0,00</string>
+    <string name="item_carta_remove">-</string>
+    <string name="item_carta_quantity_zero">0</string>
+    <string name="item_carta_add">+</string>
+</resources>
+

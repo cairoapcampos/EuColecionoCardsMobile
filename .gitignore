@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local configuration (SDK path, local secrets)
+local.properties
+
+# IDE (Android Studio / IntelliJ)
+.idea/
+*.iml
+
+# Android generated/capture files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing keys and local env files
+*.jks
+*.keystore
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+

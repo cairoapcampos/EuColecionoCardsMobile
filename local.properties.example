@@ -1,0 +1,10 @@
+## Copie este arquivo para local.properties e ajuste os valores locais.
+## Nao versione local.properties com segredos reais.
+
+# Exemplo Linux
+sdk.dir=/home/seu-usuario/Android/Sdk
+
+# Supabase
+SUPABASE_URL=https://seu-projeto.supabase.co
+SUPABASE_ANON_KEY=cole_sua_anon_key_aqui
+

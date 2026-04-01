@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/site_surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:background="@drawable/cardview_image_bg"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Avatar do usuário"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do usuário"
+            android:textColor="@color/site_dark_text"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/etBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bio"
+            android:textColor="@color/site_dark_text"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estatísticas da coleção"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvFavoritas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favoritas: 0"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnSalvarPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:backgroundTint="#388E3C"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnVoltarCartas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Voltar"
+            android:backgroundTint="@color/site_yellow"
+            android:textColor="@color/site_dark_text" />
+
+    </LinearLayout>
+</ScrollView>
+

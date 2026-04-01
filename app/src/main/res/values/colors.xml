@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="site_background">#f8f9fa</color> <!-- fundo geral -->
+    <color name="site_surface">#ffffff</color> <!-- cards, áreas elevadas -->
+    <color name="site_dark">#343a40</color> <!-- botões/menu -->
+    <color name="site_dark_text">#212529</color> <!-- texto escuro -->
+    <color name="site_yellow">#ffc107</color> <!-- destaque -->
+    <color name="site_button_text">#ffffff</color> <!-- texto de botão -->
+    <color name="site_border">#e0e0e0</color> <!-- bordas suaves -->
+    <color name="site_primary">#BCA18C</color> <!-- marrom claro para botões principais -->
+    <color name="site_favorite_red">#C62828</color> <!-- tom base dos favoritos -->
+    <color name="site_danger">@color/site_favorite_red</color> <!-- ações destrutivas, ex: sair -->
+</resources>

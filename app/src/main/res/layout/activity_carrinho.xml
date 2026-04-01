@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/site_background">
+
+    <TextView
+        android:id="@+id/tvTituloCarrinho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meu Carrinho"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvTotalCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: R$ 0,00"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/site_yellow"
+        android:gravity="end"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnPagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagar"
+        android:backgroundTint="#388E3C"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnVoltarCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:backgroundTint="@color/site_yellow"
+        android:textColor="@color/site_dark_text" />
+
+</LinearLayout>

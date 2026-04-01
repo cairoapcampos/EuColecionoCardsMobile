@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/site_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:title="EuColecionoCards"
+            android:titleTextColor="@color/site_dark_text"
+            android:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:elevation="0dp"
+            app:titleCentered="true" />
+
+        <!-- Filtro por tipo e raridade -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_margin="12dp">
+
+            <ImageButton
+                android:id="@+id/btnToggleView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Alternar visualizacao"
+                android:src="@drawable/ic_grid_view"
+                app:tint="@color/site_dark" />
+
+            <TextView
+                android:id="@+id/tvFiltroTipoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo:"
+                android:textColor="@color/site_dark_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerFiltroTipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:spinnerMode="dropdown"
+                android:background="@color/site_surface"
+                android:padding="8dp"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tvFiltroRaridadeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raridade:"
+                android:textColor="@color/site_dark_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerFiltroRaridade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:background="@color/site_surface"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Filtros avançados -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coleção:"
+                android:textColor="@color/site_dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <Spinner
+                android:id="@+id/spinnerFiltroColecao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@color/site_surface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qualidade:"
+                android:textColor="@color/site_dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <Spinner
+                android:id="@+id/spinnerFiltroQualidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@color/site_surface" />
+        </LinearLayout>
+
+        <!-- Busca -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar:"
+                android:textColor="@color/site_dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etBusca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nome ou descrição da carta"
+                android:imeOptions="actionSearch"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCartas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/listViewCartas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="96dp"
+        android:layout_marginEnd="24dp"
+        android:src="@android:drawable/ic_menu_myplaces"
+        android:contentDescription="Ir para o perfil"
+        app:backgroundTint="@color/site_yellow"
+        app:tint="@android:color/white" />
+
+    <!-- FloatingActionButton customizado sem badge -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCarrinho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:src="@drawable/ic_shopping_cart"
+        android:contentDescription="Ir para o carrinho"
+        app:backgroundTint="#388E3C"
+        app:tint="@android:color/white"
+        />
+</FrameLayout>
