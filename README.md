@@ -2,6 +2,8 @@
 
 Projeto Android em Java inspirado no sistema EuColecionoCards.
 
+![EuColecionoCardsMobile](docs/app.png)
+
 ## Pre-requisitos
 - Android Studio (versao recente com suporte a AGP 8.13.2)
 - JDK 17
