@@ -218,6 +218,8 @@ using (bucket_id = 'card-images');
 
 Cole no SQL Editor do Supabase:
 
+```
+
 | insert_sql                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | insert into public.cards (id, code, name, description, image_path, type, rarity, collection, year, quality, price, created_at, updated_at, stock_quantity) values ('7ca1408f-8628-41b4-b4f8-6ec321386b6c', 'card1', 'Dragão Branco de Olhos Azuis', 'Um dos monstros mais icônicos do jogo. Edição rara.', 'card1.webp', 'Monstro', 'Ultra Rara', 'LOB', '2002', 'NM', '100.00', '2026-04-01 00:59:20.691212+00', '2026-04-01 05:58:03.639221+00', '3'); |
@@ -244,7 +246,7 @@ Cole no SQL Editor do Supabase:
 | insert into public.cards (id, code, name, description, image_path, type, rarity, collection, year, quality, price, created_at, updated_at, stock_quantity) values ('4cbe13e3-39b2-4422-994b-cc0d961ef892', 'card7', 'Slifer, o Dragão Celeste', 'Poder aumenta conforme suas cartas na mão.', 'card7.webp', 'Monstro', 'Ultra Rara', 'GBI', '2004', 'SP', '12.50', '2026-04-01 00:59:20.691212+00', '2026-04-01 05:58:03.639221+00', '12');              |
 | insert into public.cards (id, code, name, description, image_path, type, rarity, collection, year, quality, price, created_at, updated_at, stock_quantity) values ('17f8d155-e17e-4d88-b328-3358ef0f83be', 'card8', 'O Dragão Alado de Rá', 'O mais misterioso dos Deuses Egípcios.', 'card8.webp', 'Monstro', 'Ultra Rara', 'GBI', '2004', 'NM', '16.00', '2026-04-01 00:59:20.691212+00', '2026-04-01 05:58:03.639221+00', '6');                       |
 | insert into public.cards (id, code, name, description, image_path, type, rarity, collection, year, quality, price, created_at, updated_at, stock_quantity) values ('cd304ee5-7f07-4db5-b8c1-9e54491cf0fa', 'card9', 'Pequena Maga Negra', 'Aprendiz do Mago Negro, muito querida pelos fãs.', 'card9.webp', 'Monstro', 'Super Rara', 'MFC', '2003', 'NM', '25.00', '2026-04-01 00:59:20.691212+00', '2026-04-01 05:58:03.639221+00', '4');               |
-
+```
 
 ## Build e validacao do projeto
 ```bash
