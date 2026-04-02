@@ -12,7 +12,7 @@
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:src="@drawable/logo"
-        android:contentDescription="Logo do EuColecionoCards"
+        android:contentDescription="@string/login_logo_description"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp" />
 
@@ -20,21 +20,21 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
+        android:hint="@string/login_hint_email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Senha"
+        android:hint="@string/login_hint_senha"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar"
+        android:text="@string/login_btn_entrar"
         android:backgroundTint="@color/site_yellow"
         android:textColor="@color/site_dark_text" />
 
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Nao tem conta? Cadastrar"
+        android:text="@string/login_toggle_cadastrar"
         android:textColor="@color/site_danger"
         android:textStyle="bold" />
 </LinearLayout>

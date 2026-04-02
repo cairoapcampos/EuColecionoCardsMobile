@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:title="EuColecionoCards"
+            android:title="@string/cartas_toolbar_title"
             android:titleTextColor="@color/site_dark_text"
             android:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:elevation="0dp"
@@ -35,7 +35,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:background="@android:color/transparent"
-                android:contentDescription="Alternar visualizacao"
+                android:contentDescription="@string/cartas_toggle_view_description"
                 android:src="@drawable/ic_grid_view"
                 app:tint="@color/site_dark" />
 
@@ -43,7 +43,7 @@
                 android:id="@+id/tvFiltroTipoLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo:"
+                android:text="@string/cartas_filtro_tipo"
                 android:textColor="@color/site_dark_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -63,7 +63,7 @@
                 android:id="@+id/tvFiltroRaridadeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Raridade:"
+                android:text="@string/cartas_filtro_raridade"
                 android:textColor="@color/site_dark_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Coleção:"
+                android:text="@string/cartas_filtro_colecao"
                 android:textColor="@color/site_dark_text"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qualidade:"
+                android:text="@string/cartas_filtro_qualidade"
                 android:textColor="@color/site_dark_text"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -119,6 +119,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:background="@color/site_surface" />
+        </LinearLayout>
+
+        <!-- Ordenação por preço -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cartas_filtro_preco"
+                android:textColor="@color/site_dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <Spinner
+                android:id="@+id/spinnerOrdenacaoPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/site_surface" />
+
+            <CheckBox
+                android:id="@+id/cbFavoritas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cartas_filtro_favoritas"
+                android:textColor="@color/site_dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+                android:buttonTint="@color/site_favorite_red" />
         </LinearLayout>
 
         <!-- Busca -->
@@ -134,7 +171,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buscar:"
+                android:text="@string/cartas_filtro_buscar"
                 android:textColor="@color/site_dark_text"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -145,11 +182,49 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Nome ou descrição da carta"
+                android:hint="@string/cartas_hint_busca"
                 android:imeOptions="actionSearch"
                 android:inputType="text" />
         </LinearLayout>
 
+        <!-- Mensagem quando não há cartas -->
+        <LinearLayout
+            android:id="@+id/layoutSemCartas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_favorite_border"
+                android:contentDescription="@string/cartas_sem_favoritas_icon_description"
+                android:alpha="0.4"
+                app:tint="@color/site_favorite_red" />
+
+            <TextView
+                android:id="@+id/tvSemCartas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cartas_sem_favoritas_titulo"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cartas_sem_favoritas_subtitulo"
+                android:textSize="13sp"
+                android:textColor="#9e9e9e"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView para exibir as cartas -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCartas"
             android:layout_width="match_parent"
@@ -158,6 +233,7 @@
             android:scrollbars="vertical"
             android:visibility="gone" />
 
+        <!-- ListView como alternativa para exibir as cartas -->
         <ListView
             android:id="@+id/listViewCartas"
             android:layout_width="match_parent"
@@ -174,7 +250,7 @@
         android:layout_marginBottom="96dp"
         android:layout_marginEnd="24dp"
         android:src="@android:drawable/ic_menu_myplaces"
-        android:contentDescription="Ir para o perfil"
+        android:contentDescription="@string/cartas_fab_perfil_description"
         app:backgroundTint="@color/site_yellow"
         app:tint="@android:color/white" />
 
@@ -186,7 +262,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="24dp"
         android:src="@drawable/ic_shopping_cart"
-        android:contentDescription="Ir para o carrinho"
+        android:contentDescription="@string/cartas_fab_carrinho_description"
         app:backgroundTint="#388E3C"
         app:tint="@android:color/white"
         />

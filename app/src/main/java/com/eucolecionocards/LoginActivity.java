@@ -1,6 +1,7 @@
 package com.eucolecionocards;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.eucolecionocards.data.remote.AuthSessionDto;
 import com.eucolecionocards.data.repository.AuthRepository;
+import com.eucolecionocards.security.RootDetector;
+import com.eucolecionocards.security.TamperDetector;
 import com.eucolecionocards.session.UserSession;
 
 public class LoginActivity extends Activity {
@@ -21,6 +24,28 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Deteccao de ambiente comprometido (root/jailbreak)
+        if (RootDetector.isDeviceRooted()) {
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.login_root_titulo))
+                    .setMessage(getString(R.string.login_root_mensagem))
+                    .setCancelable(false)
+                    .setPositiveButton(getString(R.string.login_fechar), (dialog, which) -> finish())
+                    .show();
+            return;
+        }
+
+        // Proteção contra adulteração (anti-tampering)
+        if (TamperDetector.isAppTampered(this)) {
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.login_tamper_titulo))
+                    .setMessage(getString(R.string.login_tamper_mensagem))
+                    .setCancelable(false)
+                    .setPositiveButton(getString(R.string.login_fechar), (dialog, which) -> finish())
+                    .show();
+            return;
+        }
 
         if (UserSession.isLoggedIn(this)) {
             abrirFluxoPosLogin();
@@ -41,13 +66,13 @@ public class LoginActivity extends Activity {
                 String senha = etPass.getText().toString();
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(LoginActivity.this, "Digite um e-mail valido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.login_email_invalido), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (senha.length() < 6) {
                     Toast.makeText(
                             LoginActivity.this,
-                            "Senha deve ter ao menos 6 caracteres.",
+                            getString(R.string.login_senha_curta),
                             Toast.LENGTH_SHORT
                     ).show();
                     return;
@@ -72,7 +97,7 @@ public class LoginActivity extends Activity {
                             }
                             modoCadastro = false;
                             atualizarModoAuth(btnLogin, tvToggleAuthMode);
-                            Toast.makeText(LoginActivity.this, "Cadastro realizado. Agora faca login.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.login_cadastro_sucesso), Toast.LENGTH_LONG).show();
                         }
 
                         @Override
@@ -133,11 +158,11 @@ public class LoginActivity extends Activity {
 
     private void atualizarModoAuth(Button btnLogin, TextView tvToggleAuthMode) {
         if (modoCadastro) {
-            btnLogin.setText("Cadastrar");
-            tvToggleAuthMode.setText("Ja tem conta? Entrar");
+            btnLogin.setText(R.string.login_btn_cadastrar);
+            tvToggleAuthMode.setText(R.string.login_toggle_entrar);
         } else {
-            btnLogin.setText("Entrar");
-            tvToggleAuthMode.setText("Nao tem conta? Cadastrar");
+            btnLogin.setText(R.string.login_btn_entrar);
+            tvToggleAuthMode.setText(R.string.login_toggle_cadastrar);
         }
     }
 }

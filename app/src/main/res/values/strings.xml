@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App -->
+    <string name="app_name">EuColecionoCards</string>
+
+    <!-- Login -->
+    <string name="login_logo_description">Logo do EuColecionoCards</string>
+    <string name="login_hint_email">E-mail</string>
+    <string name="login_hint_senha">Senha</string>
+    <string name="login_btn_entrar">Entrar</string>
+    <string name="login_btn_cadastrar">Cadastrar</string>
+    <string name="login_toggle_cadastrar">Não tem conta? Cadastrar</string>
+    <string name="login_toggle_entrar">Já tem conta? Entrar</string>
+
+    <!-- Cartas (lista / grade) -->
+    <string name="cartas_toolbar_title">EuColecionoCards</string>
+    <string name="cartas_toggle_view_description">Alternar visualização</string>
+    <string name="cartas_filtro_tipo">Tipo:</string>
+    <string name="cartas_filtro_raridade">Raridade:</string>
+    <string name="cartas_filtro_colecao">Coleção:</string>
+    <string name="cartas_filtro_qualidade">Qualidade:</string>
+    <string name="cartas_filtro_preco">Preço:</string>
+    <string name="cartas_filtro_favoritas">Favoritas</string>
+    <string name="cartas_filtro_buscar">Buscar:</string>
+    <string name="cartas_hint_busca">Nome ou descrição da carta</string>
+    <string name="cartas_sem_favoritas_titulo">Nenhuma carta favorita encontrada</string>
+    <string name="cartas_sem_favoritas_subtitulo">Toque no coração das cartas para favoritá-las!</string>
+    <string name="cartas_sem_favoritas_icon_description">Sem favoritas</string>
+    <string name="cartas_fab_perfil_description">Ir para o perfil</string>
+    <string name="cartas_fab_carrinho_description">Ir para o carrinho</string>
+    <string name="cartas_menu_sair">Sair</string>
+
+    <!-- Item carta (lista) -->
     <string name="item_carta_image_description">Imagem da Carta</string>
     <string name="item_carta_favorite_description">Favoritar Carta</string>
     <string name="item_carta_name_placeholder">Nome da Carta</string>
-    <string name="item_carta_description_placeholder">Descricao</string>
+    <string name="item_carta_description_placeholder">Descrição</string>
     <string name="item_carta_type_placeholder">Tipo</string>
     <string name="item_carta_rarity_placeholder">Raridade</string>
-    <string name="item_carta_collection_placeholder">Colecao</string>
+    <string name="item_carta_collection_placeholder">Coleção</string>
     <string name="item_carta_year_placeholder">Ano</string>
     <string name="item_carta_quality_placeholder">Qualidade</string>
     <string name="item_carta_stock_placeholder">Estoque: 0</string>
@@ -14,5 +45,66 @@
     <string name="item_carta_remove">-</string>
     <string name="item_carta_quantity_zero">0</string>
     <string name="item_carta_add">+</string>
+
+    <!-- Item carta (grade) -->
+    <string name="item_carta_grid_image_description">Imagem da carta</string>
+    <string name="item_carta_grid_favorite_description">Favoritar carta</string>
+
+    <!-- Carrinho -->
+    <string name="carrinho_titulo">Meu Carrinho</string>
+    <string name="carrinho_vazio_icon_description">Carrinho vazio</string>
+    <string name="carrinho_vazio_titulo">Seu carrinho está vazio</string>
+    <string name="carrinho_vazio_subtitulo">Adicione cartas da lista para vê-las aqui!</string>
+    <string name="carrinho_total_padrao">Total: R$ 0,00</string>
+    <string name="carrinho_btn_pagar">Pagar</string>
+    <string name="carrinho_btn_voltar">Voltar</string>
+    <string name="carrinho_item_image_description">Imagem da carta</string>
+    <string name="carrinho_item_nome_placeholder">Nome da Carta</string>
+    <string name="carrinho_item_qtd_placeholder">Qtd: 1</string>
+    <string name="carrinho_item_preco_placeholder">R$ 0,00</string>
+    <string name="carrinho_item_remove">-</string>
+    <string name="carrinho_item_add">+</string>
+    <string name="carrinho_item_estoque_formato">Estoque: %1$d</string>
+
+    <!-- Perfil -->
+    <string name="perfil_avatar_description">Avatar do usuário</string>
+    <string name="perfil_hint_nome">Nome do usuário</string>
+    <string name="perfil_hint_bio">Bio</string>
+    <string name="perfil_estatisticas_titulo">Estatísticas da coleção</string>
+    <string name="perfil_favoritas_placeholder">Favoritas: 0</string>
+    <string name="perfil_btn_salvar">Salvar</string>
+    <string name="perfil_btn_voltar">Voltar</string>
+
+    <!-- Pagamento -->
+    <string name="pagamento_em_construcao_description">Em construção</string>
+    <string name="pagamento_mensagem">Função de pagamento ainda está sendo implementada!</string>
+    <string name="pagamento_btn_voltar">Voltar</string>
+
+    <!-- Java — Carrinho -->
+    <string name="carrinho_total_formato">Total: R$ %1$.2f</string>
+
+    <!-- Java — Cartas -->
+    <string name="cartas_nenhuma_encontrada">Nenhuma carta encontrada no Supabase.</string>
+    <string name="cartas_logout_titulo">Sair</string>
+    <string name="cartas_logout_mensagem">Deseja realmente sair da sua conta?</string>
+    <string name="cartas_logout_cancelar">Cancelar</string>
+    <string name="cartas_logout_confirmar">Sair</string>
+
+    <!-- Java — Login -->
+    <string name="login_root_titulo">Dispositivo comprometido</string>
+    <string name="login_root_mensagem">Foi detectado que este dispositivo possui acesso root. Por segurança, o app não pode ser utilizado em dispositivos comprometidos.</string>
+    <string name="login_tamper_titulo">App adulterado</string>
+    <string name="login_tamper_mensagem">Foi detectado que este app foi modificado. Por segurança, não é possível continuar. Instale a versão oficial.</string>
+    <string name="login_fechar">Fechar</string>
+    <string name="login_email_invalido">Digite um e-mail válido</string>
+    <string name="login_senha_curta">Senha deve ter ao menos 6 caracteres.</string>
+    <string name="login_cadastro_sucesso">Cadastro realizado. Agora faça login.</string>
+
+    <!-- Java — Perfil -->
+    <string name="perfil_nome_curto">Informe um nome com ao menos 2 caracteres.</string>
+    <string name="perfil_complete">Complete seu perfil para continuar.</string>
+    <string name="perfil_favoritas_carregando">Favoritas: …</string>
+    <string name="perfil_favoritas_formato">Favoritas: %1$d cartas</string>
+    <string name="perfil_favoritas_indisponivel">Favoritas: indisponível</string>
 </resources>
 

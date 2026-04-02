@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,6 +26,8 @@ import com.eucolecionocards.session.UserSession;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,6 +48,9 @@ public class CartasActivity extends AppCompatActivity {
     private Spinner spinnerFiltroRaridade;
     private Spinner spinnerFiltroColecao;
     private Spinner spinnerFiltroQualidade;
+    private Spinner spinnerOrdenacaoPreco;
+    private CheckBox cbFavoritas;
+    private LinearLayout layoutSemCartas;
     private android.widget.EditText etBusca;
     private String currentUserId;
     private String accessToken;
@@ -80,7 +87,18 @@ public class CartasActivity extends AppCompatActivity {
         spinnerFiltroRaridade = findViewById(R.id.spinnerFiltroRaridade);
         spinnerFiltroColecao = findViewById(R.id.spinnerFiltroColecao);
         spinnerFiltroQualidade = findViewById(R.id.spinnerFiltroQualidade);
+        spinnerOrdenacaoPreco = findViewById(R.id.spinnerOrdenacaoPreco);
+        cbFavoritas = findViewById(R.id.cbFavoritas);
+        layoutSemCartas = findViewById(R.id.layoutSemCartas);
         etBusca = findViewById(R.id.etBusca);
+
+        ArrayList<String> opcoesPreco = new ArrayList<>();
+        opcoesPreco.add("Sem ordenação");
+        opcoesPreco.add("Menor preço");
+        opcoesPreco.add("Maior preço");
+        spinnerOrdenacaoPreco.setAdapter(criarArrayAdapter(opcoesPreco));
+
+        cbFavoritas.setOnCheckedChangeListener((buttonView, isChecked) -> aplicarFiltros());
 
         configurarListenersDeFiltro();
         configurarAcoesDaTela();
@@ -123,7 +141,7 @@ public class CartasActivity extends AppCompatActivity {
             public void onSuccess(List<Carta> cartas) {
                 if (cartas == null || cartas.isEmpty()) {
                     atualizarDados(new ArrayList<>());
-                    Toast.makeText(CartasActivity.this, "Nenhuma carta encontrada no Supabase.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CartasActivity.this, getString(R.string.cartas_nenhuma_encontrada), Toast.LENGTH_LONG).show();
                     return;
                 }
                 atualizarDados(cartas);
@@ -199,9 +217,13 @@ public class CartasActivity extends AppCompatActivity {
 
 
     private void atualizarFavoritosNaTela() {
-        listAdapter.notifyDataSetChanged();
-        if (recyclerAdapter != null) {
-            recyclerAdapter.notifyDataSetChanged();
+        if (cbFavoritas.isChecked()) {
+            aplicarFiltros();
+        } else {
+            listAdapter.notifyDataSetChanged();
+            if (recyclerAdapter != null) {
+                recyclerAdapter.notifyDataSetChanged();
+            }
         }
     }
 
@@ -264,6 +286,7 @@ public class CartasActivity extends AppCompatActivity {
         spinnerFiltroRaridade.setOnItemSelectedListener(listener);
         spinnerFiltroColecao.setOnItemSelectedListener(listener);
         spinnerFiltroQualidade.setOnItemSelectedListener(listener);
+        spinnerOrdenacaoPreco.setOnItemSelectedListener(listener);
         etBusca.setOnEditorActionListener((v, actionId, event) -> {
             aplicarFiltros();
             return false;
@@ -279,17 +302,42 @@ public class CartasActivity extends AppCompatActivity {
         String raridadeSel = spinnerFiltroRaridade.getSelectedItem().toString();
         String colecaoSel = spinnerFiltroColecao.getSelectedItem().toString();
         String qualidadeSel = spinnerFiltroQualidade.getSelectedItem().toString();
+        String precoSel = spinnerOrdenacaoPreco.getSelectedItem().toString();
         String busca = etBusca.getText().toString().trim().toLowerCase();
+        boolean somenteF = cbFavoritas.isChecked();
 
         cartasFiltradas.clear();
         for (Carta c : todasCartas) {
             boolean ok = true;
+            if (somenteF && !favoriteIds.contains(c.getId())) ok = false;
             if (!"Todos".equals(tipoSel) && !c.getTipo().equals(tipoSel)) ok = false;
             if (!"Todas".equals(raridadeSel) && !c.getRaridade().equals(raridadeSel)) ok = false;
             if (!"Todas".equals(colecaoSel) && !c.getColecao().equals(colecaoSel)) ok = false;
             if (!"Todas".equals(qualidadeSel) && !c.getQualidade().equals(qualidadeSel)) ok = false;
             if (!busca.isEmpty() && !(c.getNome().toLowerCase().contains(busca) || c.getDescricao().toLowerCase().contains(busca))) ok = false;
             if (ok) cartasFiltradas.add(c);
+        }
+
+        if ("Menor preço".equals(precoSel)) {
+            Collections.sort(cartasFiltradas, Comparator.comparingDouble(Carta::getPreco));
+        } else if ("Maior preço".equals(precoSel)) {
+            Collections.sort(cartasFiltradas, (a, b) -> Double.compare(b.getPreco(), a.getPreco()));
+        }
+
+        // Controlar visibilidade do empty state
+        if (cartasFiltradas.isEmpty() && somenteF) {
+            layoutSemCartas.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            layoutSemCartas.setVisibility(View.GONE);
+            if (isGrid) {
+                recyclerView.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+            } else {
+                listView.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
+            }
         }
 
         listAdapter.setCartas(cartasFiltradas);
@@ -344,10 +392,10 @@ public class CartasActivity extends AppCompatActivity {
 
     private void mostrarConfirmacaoLogout() {
         new AlertDialog.Builder(this)
-                .setTitle("Sair")
-                .setMessage("Deseja realmente sair da sua conta?")
-                .setNegativeButton("Cancelar", null)
-                .setPositiveButton("Sair", (dialog, which) -> executarLogout())
+                .setTitle(R.string.cartas_logout_titulo)
+                .setMessage(R.string.cartas_logout_mensagem)
+                .setNegativeButton(R.string.cartas_logout_cancelar, null)
+                .setPositiveButton(R.string.cartas_logout_confirmar, (dialog, which) -> executarLogout())
                 .show();
     }
 

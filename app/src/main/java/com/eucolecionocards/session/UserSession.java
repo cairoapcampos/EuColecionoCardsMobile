@@ -2,6 +2,7 @@ package com.eucolecionocards.session;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.eucolecionocards.security.SecurePrefs;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
@@ -87,8 +88,7 @@ public final class UserSession {
     }
 
     private static SharedPreferences getPrefs(Context context) {
-        String prefsName = context.getPackageName() + "_preferences";
-        return context.getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+        return SecurePrefs.get(context);
     }
 
     private static String safeValue(String value) {

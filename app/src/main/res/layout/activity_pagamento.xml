@@ -11,14 +11,14 @@
         android:id="@+id/ivTumbleweeds"
         android:layout_width="320dp"
         android:layout_height="185dp"
-        android:contentDescription="Em construção"
+        android:contentDescription="@string/pagamento_em_construcao_description"
         android:src="@drawable/emcontrucao" />
 
     <TextView
         android:id="@+id/tvMensagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Função de pagamento ainda está sendo implementada!"
+        android:text="@string/pagamento_mensagem"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -28,10 +28,9 @@
         android:id="@+id/btnVoltarPagamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voltar"
+        android:text="@string/pagamento_btn_voltar"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/site_yellow"
         android:textColor="@color/site_dark_text" />
 
 </LinearLayout>
-

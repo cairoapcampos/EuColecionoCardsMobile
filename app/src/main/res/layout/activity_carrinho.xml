@@ -10,11 +10,46 @@
         android:id="@+id/tvTituloCarrinho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meu Carrinho"
+        android:text="@string/carrinho_titulo"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp" />
+
+    <!-- Empty state -->
+    <LinearLayout
+        android:id="@+id/layoutCarrinhoVazio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/ic_empty_cart"
+            android:contentDescription="@string/carrinho_vazio_icon_description"
+            android:alpha="0.6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carrinho_vazio_titulo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/site_dark_text"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carrinho_vazio_subtitulo"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCarrinho"
@@ -28,7 +63,7 @@
         android:id="@+id/tvTotalCarrinho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total: R$ 0,00"
+        android:text="@string/carrinho_total_padrao"
         android:textStyle="bold"
         android:textSize="18sp"
         android:textColor="@color/site_yellow"
@@ -40,7 +75,7 @@
         android:id="@+id/btnPagar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pagar"
+        android:text="@string/carrinho_btn_pagar"
         android:backgroundTint="#388E3C"
         android:textColor="@android:color/white"
         android:layout_marginBottom="8dp" />
@@ -49,7 +84,7 @@
         android:id="@+id/btnVoltarCarrinho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voltar"
+        android:text="@string/carrinho_btn_voltar"
         android:backgroundTint="@color/site_yellow"
         android:textColor="@color/site_dark_text" />
 

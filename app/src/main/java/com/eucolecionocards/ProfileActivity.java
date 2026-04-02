@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.eucolecionocards.data.remote.ProfileDto;
 import com.eucolecionocards.data.repository.FavoriteRepository;
 import com.eucolecionocards.data.repository.ProfileRepository;
+import com.eucolecionocards.security.SecurePrefs;
 import com.eucolecionocards.session.UserSession;
 import java.util.Set;
 
@@ -42,8 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
         accessToken = UserSession.getAccessToken(this);
         userId = UserSession.getUserId(this);
 
-        String prefsName = getPackageName() + "_preferences";
-        prefs = getSharedPreferences(prefsName, MODE_PRIVATE);
+        prefs = SecurePrefs.get(this);
         ivAvatar = findViewById(R.id.ivAvatar);
         etNome = findViewById(R.id.etNome);
         etBio = findViewById(R.id.etBio);
@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
             String bio = etBio.getText().toString().trim();
 
             if (nome.length() < MIN_NOME_LEN) {
-                Toast.makeText(ProfileActivity.this, "Informe um nome com ao menos 2 caracteres.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, getString(R.string.perfil_nome_curto), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -109,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (forceCompleteProfile) {
-            Toast.makeText(this, "Complete seu perfil para continuar.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.perfil_complete), Toast.LENGTH_SHORT).show();
             return;
         }
         super.onBackPressed();
@@ -183,16 +183,16 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void atualizarEstatisticas() {
 
-        tvFavoritas.setText("Favoritas: ...");
+        tvFavoritas.setText(R.string.perfil_favoritas_carregando);
         favoriteRepository.loadFavorites(UserSession.getUserId(this), UserSession.getAccessToken(this), new FavoriteRepository.LoadFavoritesCallback() {
             @Override
             public void onSuccess(Set<String> favoriteIds) {
-                tvFavoritas.setText("Favoritas: " + favoriteIds.size() + " cartas");
+                tvFavoritas.setText(getString(R.string.perfil_favoritas_formato, favoriteIds.size()));
             }
 
             @Override
             public void onError(String message) {
-                tvFavoritas.setText("Favoritas: indisponivel");
+                tvFavoritas.setText(R.string.perfil_favoritas_indisponivel);
                 Toast.makeText(ProfileActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });

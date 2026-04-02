@@ -19,7 +19,7 @@
             android:background="@drawable/cardview_image_bg"
             android:scaleType="centerCrop"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="Avatar do usuário"
+            android:contentDescription="@string/perfil_avatar_description"
             android:clickable="true"
             android:focusable="true"
             android:layout_marginBottom="16dp" />
@@ -28,7 +28,7 @@
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome do usuário"
+            android:hint="@string/perfil_hint_nome"
             android:textColor="@color/site_dark_text"
             android:textSize="18sp"
             android:layout_marginBottom="12dp" />
@@ -37,7 +37,7 @@
             android:id="@+id/etBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bio"
+            android:hint="@string/perfil_hint_bio"
             android:textColor="@color/site_dark_text"
             android:textSize="16sp"
             android:layout_marginBottom="20dp" />
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estatísticas da coleção"
+            android:text="@string/perfil_estatisticas_titulo"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginBottom="8dp" />
@@ -54,7 +54,7 @@
             android:id="@+id/tvFavoritas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favoritas: 0"
+            android:text="@string/perfil_favoritas_placeholder"
             android:textSize="16sp"
             android:layout_marginBottom="24dp" />
 
@@ -62,7 +62,7 @@
             android:id="@+id/btnSalvarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvar"
+            android:text="@string/perfil_btn_salvar"
             android:backgroundTint="#388E3C"
             android:textColor="@android:color/white" />
 
@@ -71,10 +71,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Voltar"
+            android:text="@string/perfil_btn_voltar"
             android:backgroundTint="@color/site_yellow"
             android:textColor="@color/site_dark_text" />
 
     </LinearLayout>
 </ScrollView>
-

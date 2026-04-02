@@ -255,8 +255,19 @@ Cole no SQL Editor do Supabase:
 ./gradlew :app:assembleDebug
 ```
 
-## Seguranca de senha
-- A validacao atual no login exige senha com no minimo 10 caracteres.
-- Para maior seguranca, recomenda-se reforcar a politica no cliente e no Supabase Auth.
+## Segurança
 
+O app implementa diversas técnicas de segurança. A documentação completa está em
+**[docs/SEGURANCA.md](docs/SEGURANCA.md)**.
+
+Resumo das técnicas:
+
+| # | Técnica | Descrição |
+|---|---|---|
+| 1 | **Segurança de senha** | Validação de senha com no mínimo 10 caracteres no login/cadastro |
+| 2 | **Ofuscação de código (R8)** | `minifyEnabled true` no build release; renomeia classes e métodos para dificultar engenharia reversa (`app/proguard-rules.pro`) |
+| 3 | **Detecção de root/jailbreak** | `RootDetector` verifica binário `su`, apps de root, build tags e execução de `which su`; bloqueia o app se detectado |
+| 4 | **Armazenamento criptografado** | `EncryptedSharedPreferences` com AES-256 (GCM + SIV) via Android Keystore para proteger tokens e dados do usuário |
+| 5 | **Anti-tampering** | `TamperDetector` compara o hash SHA-256 do certificado de assinatura do APK com o esperado; bloqueia se o app foi modificado e reassinado |
+| 6 | **SSL pinning** | `CertificatePinner` do OkHttp fixa os hashes SHA-256 dos certificados do Supabase; rejeita conexões com certificados falsos (man-in-the-middle) |
 

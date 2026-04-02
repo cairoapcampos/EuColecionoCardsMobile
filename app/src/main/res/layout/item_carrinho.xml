@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -13,7 +14,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/logo"
         android:background="@drawable/cardview_image_bg"
-        android:contentDescription="Imagem da carta"
+        android:contentDescription="@string/carrinho_item_image_description"
         android:layout_gravity="center_vertical" />
 
     <LinearLayout
@@ -28,25 +29,68 @@
             android:id="@+id/tvNomeCarta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome da Carta"
+            android:text="@string/carrinho_item_nome_placeholder"
             android:textStyle="bold"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tvQuantidade"
+            android:id="@+id/tvEstoque"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Qtd: 1"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+            android:text="@string/item_carta_stock_placeholder"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp" />
 
-    <TextView
-        android:id="@+id/tvSubtotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="R$ 0,00"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="@color/site_yellow" />
+        <TextView
+            android:id="@+id/tvSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/carrinho_item_preco_placeholder"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/site_yellow"
+            android:layout_marginTop="4dp" />
+
+        <!-- Botões +/- e quantidade -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRemover"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="@string/carrinho_item_remove"
+                android:textAllCaps="false"
+                android:textColor="@color/site_button_text"
+                app:cornerRadius="18dp"
+                app:backgroundTint="@color/site_dark"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tvQuantidade"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="@string/item_carta_quantity_zero"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/site_dark_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdicionar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="@string/carrinho_item_add"
+                android:textAllCaps="false"
+                android:textColor="@color/site_button_text"
+                app:cornerRadius="18dp"
+                app:backgroundTint="@color/site_dark"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
