@@ -185,7 +185,7 @@ com.eucolecionocards.security.RootDetector -> a:
 
 **Classe:** `com.eucolecionocards.security.RootDetector`
 
-### O que é root e por que é um risco
+### O que é root e por que é um risco?
 
 Root (Android) ou jailbreak (iOS) é o processo de obter privilégios de superusuário no
 dispositivo. Isso permite acesso irrestrito a **todos** os arquivos do sistema, incluindo
@@ -259,7 +259,7 @@ Usuário abre o app
 | `com.thirdparty.superuser` | Superuser (genérico) |
 | `com.yellowes.su` | Root checker alternativo |
 
-### O que acontece quando root é detectado
+### O que acontece quando root é detectado?
 
 O app exibe um **diálogo modal bloqueante** que:
 - **Não pode ser cancelado** (`setCancelable(false)`) — tocar fora ou pressionar "voltar" não fecha
@@ -436,7 +436,7 @@ recursos e **reempacotar** com uma nova assinatura. Isso permite que um atacante
 A ofuscação (técnica nº 2) **dificulta** a engenharia reversa, mas **não impede** a modificação.
 O anti-tampering **detecta** que o APK foi modificado e bloqueia a execução.
 
-### Como funciona
+### Como funciona?
 
 Cada APK é assinado digitalmente com um certificado do desenvolvedor. Quando alguém modifica
 e reempacota o APK, precisa assiná-lo com um **certificado diferente** (pois não possui a
@@ -484,7 +484,7 @@ Atacante descompila o APK com apktool/jadx
                                       └─> "App adulterado" → app fecha ✓
 ```
 
-### O que acontece quando adulteração é detectada
+### O que acontece quando adulteração é detectada?
 
 O app exibe um **diálogo modal bloqueante** (igual ao de root):
 - **Não pode ser cancelado** — `setCancelable(false)`
@@ -528,7 +528,7 @@ onCreate()
   └─ 5. Exibe campos de login/cadastro
 ```
 
-### Como obter o hash do certificado de assinatura
+### Como obter o hash do certificado de assinatura?
 
 **Para a keystore de debug:**
 ```bash
@@ -579,7 +579,7 @@ private static final String EXPECTED_SIGNATURE_SHA256 =
 
 **Classe:** `com.eucolecionocards.data.api.ApiClient`
 
-### O que é SSL pinning e por que é importante
+### O que é SSL pinning e por que é importante?
 
 Por padrão, o Android confia em qualquer certificado emitido por uma **Autoridade Certificadora (CA)**
 presente no repositório de confiança do sistema. Isso significa que:
@@ -666,7 +666,7 @@ O OkHttp usa **public key pinning** (HPKP), não pinagem de certificado completo
 | **Certificate pinning** | Hash do certificado inteiro (incluindo datas, emissor, etc.) | Mais restritivo | Quebra a cada renovação |
 | **Public key pinning** ✓ | Hash apenas da chave pública (SPKI) | Sobrevive a renovações se a mesma chave for reutilizada | Menos restritivo |
 
-### Como atualizar os pins
+### Como atualizar os pins?
 
 Quando o Supabase trocar de CA ou renovar os certificados com chaves novas, os pins devem ser atualizados:
 
